@@ -7,6 +7,8 @@ You can define multiple folders where themes are installed and also defined adap
 By default the current theme is displayed based on the configuration file, but the module allows the creation of adapters that can select 
 the theme from the session, a database field or any other place you saved it to.
 
+Zend Framework 3 compatible added.
+
 ### Installation / Usage
 
 ZeTheme can be installed using Composer by simply adding the following lines to your composer.json file:
