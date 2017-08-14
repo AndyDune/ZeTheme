@@ -23,6 +23,7 @@ class Module
     {
         // Set the static service manager instance so we can use it everywhere in the module
         $serviceManager = $event->getApplication()->getServiceManager();
+        /** @var \ZeTheme\Manager $themeManager */
         $themeManager = $serviceManager->get('ZeThemeManager');
         $themeManager->init();
     }

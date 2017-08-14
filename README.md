@@ -17,6 +17,15 @@ ZeTheme can be installed using Composer by simply adding the following lines to 
         "zendexperts/ze-theme": "dev-master"
     }
     
+Add this lines to composer.json file for ZW3:
+    
+    "repositories": [
+        {
+            "type": "git",
+            "url": "https://github.com/AndyDune/ZeTheme"
+        }
+    
+    
 Then run `php composer.phar update` and add `ZeTheme` in the `application.config.php` file under `modules`.
 
 ### Documentation

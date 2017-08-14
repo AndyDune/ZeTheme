@@ -8,9 +8,14 @@
  * file that was distributed with this source code.
  */
 namespace ZeTheme\Service;
-use Zend\ServiceManager\FactoryInterface,
-    Zend\ServiceManager\ServiceLocatorInterface,
+use Zend\ServiceManager\Factory\FactoryInterface,
     ZeTheme\Manager;
+
+use Interop\Container\ContainerInterface;
+use Interop\Container\Exception\ContainerException;
+use Zend\ServiceManager\Exception\ServiceNotCreatedException;
+use Zend\ServiceManager\Exception\ServiceNotFoundException;
+
 
 /**
  * ZeTheme service manager factory
@@ -20,15 +25,22 @@ use Zend\ServiceManager\FactoryInterface,
 class ManagerFactory implements FactoryInterface
 {
     /**
-     * Factory method for ZeTheme Manager service
+     * Create an object
      *
-     * @param  ServiceLocatorInterface $serviceLocator
-     * @return \ZeTheme\Manager
+     * @param  ContainerInterface $container
+     * @param  string             $requestedName
+     * @param  null|array         $options
+     * @return object
+     * @throws ServiceNotFoundException if unable to resolve the service.
+     * @throws ServiceNotCreatedException if an exception is raised when
+     *     creating a service.
+     * @throws ContainerException if any other error occurs
      */
-    public function createService(ServiceLocatorInterface $serviceLocator)
+
+    public function __invoke(ContainerInterface $container, $requestedName, array $options = null)
     {
-        $config = $serviceLocator->get('Configuration');
-        $manager = new Manager($serviceLocator, $config['ze_theme']);
+        $config = $container->get('Configuration');
+        $manager = new Manager($container, $config['ze_theme']);
         return $manager;
     }
 }
